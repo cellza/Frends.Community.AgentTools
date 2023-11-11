@@ -18,11 +18,8 @@ jobs:
      with:
        dotnet-version: '6.0.x'
    - name: Install dependencies
-     working-directory: Frends.Community.AgentTools
      run: dotnet restore
    - name: Build
-     working-directory: Frends.Community.AgentTools
      run: dotnet build
    - name: Test with the dotnet CLI
-     working-directory: Frends.Community.AgentTools
      run: dotnet test
