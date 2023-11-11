@@ -10,9 +10,19 @@ on:
 
 jobs:
   build:
-    uses: FrendsPlatform/FrendsTasks/.github/workflows/linux_build_main.yml@main
-    with:
-      workdir: AgentTools
-    secrets:
-      badge_service_api_key: ${{ secrets.BADGE_SERVICE_API_KEY }}
-      
+   runs-on: ubuntu-latest
+   steps:
+   - uses: actions/checkout@v4
+   - name: Setup dotnet
+     uses: actions/setup-dotnet@v3
+     with:
+       dotnet-version: '6.0.x'
+   - name: Install dependencies
+     working-directory: AgentTools
+     run: dotnet restore
+   - name: Build
+     working-directory: AgentTools
+     run: dotnet build
+   - name: Test with the dotnet CLI
+     working-directory: AgentTools
+     run: dotnet test
