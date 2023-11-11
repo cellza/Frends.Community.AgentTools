@@ -1,17 +1,16 @@
-﻿namespace AgentTools;
+﻿namespace Frends.Community.AgentTools;
 
 using System.ComponentModel;
 using System.Threading;
-using AgentTools.Definitions;
+using Frends.Community.AgentTools.Definitions;
 
 /// <summary>
 /// Main class of the Task.
 /// </summary>
-public static class NetworkClass
+public static class NetworkTools
 {
     /// <summary>
-    /// This is Task.
-    /// [Documentation](https://tasks.frends.com/tasks/frends-tasks/AgentTools).
+    /// Ping a ipv4 address.
     /// </summary>
     /// <param name="input">What to repeat.</param>
     /// <param name="options">Define if repeated multiple times. </param>

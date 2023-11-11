@@ -1,0 +1,24 @@
+name: Ping_release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x' # SDK Version to use.
+          source-url: https://nuget.pkg.github.com/<owner>/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: dotnet build --configuration Release AgentTools
+      - name: Create the package
+        run: dotnet pack --configuration Release AgentTools
+      - name: Publish the package to GPR
+        run: dotnet nuget push ./AgentTools/bin/Release/*.nupkg --source https://nuget.pkg.github.com/cellza/index.json --skip-duplicate

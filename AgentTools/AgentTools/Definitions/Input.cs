@@ -1,4 +1,4 @@
-﻿namespace AgentTools.Definitions;
+﻿namespace Frends.Community.AgentTools.Definitions;
 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;

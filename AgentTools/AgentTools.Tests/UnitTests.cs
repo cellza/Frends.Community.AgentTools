@@ -1,6 +1,6 @@
-namespace AgentTools.Tests;
+namespace Frends.Community.AgentTools.Tests;
 
-using AgentTools.Definitions;
+using Frends.Community.AgentTools.Definitions;
 using NUnit.Framework;
 
 [TestFixture]
@@ -20,7 +20,7 @@ internal class UnitTests
             Delimiter = ", ",
         };
 
-        var ret = NetworkClass.Ping(input, options, default);
+        var ret = NetworkTools.Ping(input, options, default);
 
         Assert.That(ret.Output, Is.EqualTo("foobar, foobar, foobar"));
     }

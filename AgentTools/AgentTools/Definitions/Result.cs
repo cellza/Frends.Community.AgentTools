@@ -1,4 +1,4 @@
-﻿namespace AgentTools.Definitions;
+﻿namespace Frends.Community.AgentTools.Definitions;
 
 /// <summary>
 /// Result class usually contains properties of the return object.
