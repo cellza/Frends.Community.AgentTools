@@ -17,8 +17,8 @@ jobs:
           source-url: https://nuget.pkg.github.com/<owner>/index.json
         env:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - run: dotnet build --configuration Release AgentTools
+      - run: dotnet build --configuration Release Frends.Community.AgentTools
       - name: Create the package
-        run: dotnet pack --configuration Release AgentTools
+        run: dotnet pack --configuration Release Frends.Community.AgentTools
       - name: Publish the package to GPR
-        run: dotnet nuget push ./AgentTools/bin/Release/*.nupkg --source https://nuget.pkg.github.com/cellza/index.json --skip-duplicate
+        run: dotnet nuget push Frends.Community.AgentTools/bin/Release/*.nupkg --source https://nuget.pkg.github.com/cellza/index.json --skip-duplicate
