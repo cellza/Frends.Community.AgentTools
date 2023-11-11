@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AgentTools\AgentTools.csproj" />
+    <ProjectReference Include="..\AgentTools\Frends.Community.AgentTools.csproj" />
   </ItemGroup>
 
 </Project>

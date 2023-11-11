@@ -9,14 +9,14 @@ using System.ComponentModel.DataAnnotations;
 public class Options
 {
     /// <summary>
-    /// Number of times input is repeated.
+    /// Gets or sets number of times input is repeated.
     /// </summary>
     /// <example>Example of the parameter value.</example>
     [DefaultValue(3)]
     public int Amount { get; set; }
 
     /// <summary>
-    /// How repeats of the input are separated.
+    /// Gets or sets how repeats of the input are separated.
     /// </summary>
     /// <example>Example of the parameter value.</example>
     [DisplayFormat(DataFormatString = "Text")]

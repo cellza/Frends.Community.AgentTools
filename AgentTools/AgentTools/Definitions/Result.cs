@@ -5,6 +5,7 @@
 /// </summary>
 public class Result
 {
+
     internal Result(string output)
     {
         this.Output = output;

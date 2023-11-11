@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 public class Input
 {
     /// <summary>
-    /// Something that will be repeated.
+    /// Gets or sets something that will be repeated.
     /// </summary>
     /// <example>Some example of the expected value.</example>
     [DisplayFormat(DataFormatString = "Text")]
