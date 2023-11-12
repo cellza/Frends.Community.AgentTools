@@ -24,5 +24,8 @@ jobs:
     - name: Pack release version of task
       run: dotnet pack --configuration Release 
       
-    - name: Push NuGet package to the testfeed
+    - name: Push NuGet package to the Github testfeed
       run: dotnet nuget push Frends.Community.AgentTools/bin/Release/*.nupkg  --api-key ${{ secrets.NUGET_PUBLISH_TOKEN  }} --source https://nuget.pkg.github.com/cellza/index.json --symbol-source https://nuget.pkg.github.com/cellza/index.json --skip-duplicate
+
+    - name: Push NuGet package to the Azure devops testfeed
+      run: dotnet nuget push Frends.Community.AgentTools/bin/Release/*.nupkg  --api-key ${{ secrets.NUGET_DEVOPS_PUBLISH_TOKEN  }} --source https://pkgs.dev.azure.com/tomsall0380/Frends-Sweden/_packaging/FrendsFeed/nuget/v3/index.json --skip-duplicate
