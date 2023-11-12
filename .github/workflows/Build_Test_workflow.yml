@@ -1,25 +1,28 @@
-name: Ping_build_main
+name: BuildAndTestOnEveryPush.yml
 
 on:
   push:
-    branches:    
-      - main
-    paths:
-      - 'Frends.Community.AgentTools/**'
-  workflow_dispatch:
+    branches-ignore:
+      - master
 
 jobs:
   build:
-   runs-on: ubuntu-latest
-   steps:
-   - uses: actions/checkout@v4
-   - name: Setup dotnet
-     uses: actions/setup-dotnet@v3
-     with:
-       dotnet-version: '6.0.x'
-   - name: Install dependencies
-     run: dotnet restore
-   - name: Build
-     run: dotnet build
-   - name: Test with the dotnet CLI
-     run: dotnet test
+    name: Build on windows-latest
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Build
+      run: dotnet build
+    
+    - name: Test
+      env:
+        EXAMPLE_ENVIROMENT_VARIABLE:  ${{ secrets.EXAMPLE_ENVIROMENT_VARIABLE }}
+      run: dotnet test
+      
+    - name: Pack release version of task
+      run: dotnet pack --configuration Release --include-source
+      
+    - name: Push NuGet package to the testfeed
+      run: dotnet nuget push Frends.Community.AgentTools\bin\Release\Reports.*.nupkg  --api-key ${{ secrets.NUGET_PUBLISH_TOKEN  }} --source https://nuget.pkg.github.com/cellza/index.json --symbol-source https://nuget.pkg.github.com/cellza/index.json --skip-duplicate

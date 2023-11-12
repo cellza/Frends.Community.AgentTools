@@ -1,24 +1,28 @@
-name: Ping_release
+name: BuildAndTestOnEveryPush.yml
 
 on:
-  workflow_dispatch:
+  push:
+    branches-ignore:
+      - master
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
+  build:
+    name: Build on windows-latest
+    runs-on: windows-latest
+    
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '6.0.x' # SDK Version to use.
-          source-url: https://nuget.pkg.github.com/<owner>/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - run: dotnet build --configuration Release Frends.Community.AgentTools
-      - name: Create the package
-        run: dotnet pack --configuration Release Frends.Community.AgentTools
-      - name: Publish the package to GPR
-        run: dotnet nuget push Frends.Community.AgentTools/bin/Release/*.nupkg --source https://nuget.pkg.github.com/cellza/index.json --skip-duplicate
+    - uses: actions/checkout@v1
+
+    - name: Build
+      run: dotnet build
+    
+    - name: Test
+      env:
+        EXAMPLE_ENVIROMENT_VARIABLE:  ${{ secrets.EXAMPLE_ENVIROMENT_VARIABLE }}
+      run: dotnet test
+      
+    - name: Pack release version of task
+      run: dotnet pack --configuration Release --include-source
+      
+    - name: Push NuGet package to the testfeed
+      run: dotnet nuget push Reports\bin\Release\Reports.*.nupkg  --api-key ${{ secrets.NUGET_PUBLISH_TOKEN  }} --source https://nuget.pkg.github.com/cellza/index.json --symbol-source https://nuget.pkg.github.com/cellza/index.json --skip-duplicate
