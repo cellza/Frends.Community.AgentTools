@@ -1,4 +1,4 @@
-name: BuildAndTestOnEveryPush.yml
+name: Build and publish
 
 on:
   push:
@@ -18,11 +18,11 @@ jobs:
     
     - name: Test
       env:
-        EXAMPLE_ENVIROMENT_VARIABLE:  ${{ secrets.EXAMPLE_ENVIROMENT_VARIABLE }}
+        EXAMPLE_ENVIROMENT_VARIABLE:  ${{ secrets.NUGET_PUBLISH_TOKEN }}
       run: dotnet test
       
     - name: Pack release version of task
-      run: dotnet pack --configuration Release --include-source
+      run: dotnet pack --configuration Release 
       
     - name: Push NuGet package to the testfeed
-      run: dotnet nuget push Frends.Community.AgentTools\bin\Release\Reports.*.nupkg  --api-key ${{ secrets.NUGET_PUBLISH_TOKEN  }} --source https://nuget.pkg.github.com/cellza/index.json --symbol-source https://nuget.pkg.github.com/cellza/index.json --skip-duplicate
+      run: dotnet nuget push Frends.Community.AgentTools\bin\Release\*.nupkg  --api-key ${{ secrets.NUGET_PUBLISH_TOKEN  }} --source https://nuget.pkg.github.com/cellza/index.json --symbol-source https://nuget.pkg.github.com/cellza/index.json --skip-duplicate
