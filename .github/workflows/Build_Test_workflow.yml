@@ -25,4 +25,4 @@ jobs:
       run: dotnet pack --configuration Release 
       
     - name: Push NuGet package to the testfeed
-      run: dotnet nuget push Frends.Community.AgentTools\bin\Release\*.nupkg  --api-key ${{ secrets.NUGET_PUBLISH_TOKEN  }} --source https://nuget.pkg.github.com/cellza/index.json --symbol-source https://nuget.pkg.github.com/cellza/index.json --skip-duplicate
+      run: dotnet nuget push Frends.Community.AgentTools\Frends.Community.AgentTools\bin\Release\*.nupkg  --api-key ${{ secrets.NUGET_PUBLISH_TOKEN  }} --source https://nuget.pkg.github.com/cellza/index.json --symbol-source https://nuget.pkg.github.com/cellza/index.json --skip-duplicate
