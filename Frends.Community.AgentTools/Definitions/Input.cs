@@ -2,6 +2,7 @@
 
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Net;
 
 /// <summary>
 /// Input class usually contains parameters that are required.
@@ -9,10 +10,10 @@ using System.ComponentModel.DataAnnotations;
 public class Input
 {
     /// <summary>
-    /// Gets or sets something that will be repeated.
+    /// Gets or sets fqdn or ip address of the target.
     /// </summary>
     /// <example>Some example of the expected value.</example>
     [DisplayFormat(DataFormatString = "Text")]
-    [DefaultValue("Lorem ipsum dolor sit amet.")]
+    [DefaultValue("localhost")]
     public string Content { get; set; }
 }

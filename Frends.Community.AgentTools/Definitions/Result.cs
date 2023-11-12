@@ -6,14 +6,14 @@
 public class Result
 {
 
-    internal Result(string output)
+    internal Result(bool output)
     {
         this.Output = output;
     }
 
     /// <summary>
-    /// Contains the input repeated the specified number of times.
+    /// Gets a value wheter the host is reachable.
     /// </summary>
     /// <example>Example of the output.</example>
-    public string Output { get; private set; }
+    public bool Output { get; private set; }
 }

@@ -2,12 +2,6 @@
 	"Tasks": [
 		{
 			"TaskMethod": "Frends.Community.AgentTools.NetworkTools.Ping"
-		},
-		{
-			"TaskMethod": "Frends.Community.AgentTools.NetworkTools.TestConnection"
-		},
-		{
-			"TaskMethod": "Frends.Community.AgentTools.NetworkTools.GetNetworkInfo"
 		}
 	]
 }
