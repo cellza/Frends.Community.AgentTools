@@ -7,9 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		..\.github\workflows\Build_Test_workflow.yml = ..\.github\workflows\Build_Test_workflow.yml
 		CHANGELOG.md = CHANGELOG.md
-		..\.github\workflows\Ping_build_and_test_on_push.yml = ..\.github\workflows\Ping_build_and_test_on_push.yml
 		README.md = README.md
-		..\.github\workflows\Release_workflow.yml = ..\.github\workflows\Release_workflow.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frends.Community.AgentTools", "Frends.Community.AgentTools\Frends.Community.AgentTools.csproj", "{C613DC47-5786-4AC1-970A-EB4B68C99D4B}"
