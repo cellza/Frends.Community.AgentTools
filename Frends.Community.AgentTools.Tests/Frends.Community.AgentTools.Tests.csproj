@@ -30,7 +30,7 @@
 		<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
 	</PackageReference>
   </ItemGroup>
-q
+
   <ItemGroup>
     <ProjectReference Include="..\Frends.Community.AgentTools\Frends.Community.AgentTools.csproj" />
   </ItemGroup>
